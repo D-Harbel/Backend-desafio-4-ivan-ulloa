@@ -52,10 +52,6 @@ module.exports = function (io) {
             return res.status(400).json({ error: 'No se permite el campo vacío en category' });
         }
 
-        if (!Array.isArray(thumbnails) || !thumbnails.every(url => typeof url === 'string')) {
-            return res.status(400).json({ error: 'thumbnails solo permite URL dentro de un array de cadenas' });
-        }
-
         pm.addProduct(title, description, code, price, true, stock, category, thumbnails);
 
         const products = pm.getProducts();
